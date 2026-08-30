@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Beautiful Memories ✨</title>
+    <meta name="description" content="A collection of beautiful memories for karthika's birthday 💖">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ─── Reset ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        /* ─── Body ─── */
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #ffefd5 50%, #e6e6fa 75%, #ffd1dc 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            color: #4a4a4a;
+        }
+
+        @keyframes gradientFlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ─── Custom Cursor ─── */
+        .cursor {
+            width: 28px;
+            height: 28px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            filter: drop-shadow(0 0 6px rgba(255, 105, 180, 0.7));
+        }
+
+        .cursor svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ─── Sparkle Layer ─── */
+        .magic-sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .magic-sparkles::before,
+        .magic-sparkles::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: sparkleLayer 8s linear infinite;
+            opacity: 0.4;
+        }
+
+        .magic-sparkles::after {
+            animation-delay: -4s;
+            transform: rotate(45deg);
+        }
+
+        @keyframes sparkleLayer {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50px);
+            }
+        }
+
+        /* ─── Floating Hearts ─── */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 105, 180, 0.6);
+            animation: floatHeart var(--float-duration, 6s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(var(--translate-x, 0), -100vh) rotate(360deg);
+            }
+        }
+
+        /* ─── Welcome Section ─── */
+        .welcome {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .welcome h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff69b4, #da70d6, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.35));
+            animation: fadeInScale 1.5s ease;
+        }
+
+        .welcome p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 1.2rem auto 0;
+            line-height: 1.7;
+            color: #6b3a6b;
+            font-weight: 500;
+            animation: fadeIn 1.5s ease 0.5s both;
+        }
+
+        .welcome-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.4rem 1.4rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(255, 105, 180, 0.35);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #be185d;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        /* ─── Section Headers ─── */
+        .section-header {
+            text-align: center;
+            padding: 2rem 1rem 0.5rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .section-header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #c026d3;
+            margin-bottom: 0.3rem;
+        }
+
+        .section-header p {
+            font-size: 0.95rem;
+            color: #7c3aed;
+            font-weight: 500;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff69b4, #da70d6);
+            border-radius: 2px;
+            margin: 0.6rem auto 0;
+        }
+
+        /* ─── Polaroid / Flip Cards Grid ─── */
+        .memory-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            z-index: 3;
+            position: relative;
+        }
+
+        /* Polaroid tilt effect */
+        .polaroid-wrap {
+            perspective: 1000px;
+        }
+
+        .polaroid-wrap:nth-child(1) {
+            transform: rotate(-2deg);
+        }
+
+        .polaroid-wrap:nth-child(2) {
+            transform: rotate(1.5deg);
+        }
+
+        .polaroid-wrap:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+
+        .polaroid-wrap:nth-child(4) {
+            transform: rotate(2.5deg);
+        }
+
+        .polaroid-wrap:nth-child(5) {
+            transform: rotate(-1.5deg);
+        }
+
+        .polaroid-wrap:nth-child(6) {
+            transform: rotate(1deg);
+        }
+
+        .polaroid-wrap:hover {
+            transform: rotate(0deg) scale(1.04);
+            transition: transform 0.4s ease;
+            z-index: 10;
+        }
+
+        /* Flip Card */
+        .flip-card {
+            width: 100%;
+            min-height: 380px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Card faces */
+        .flip-front,
+        .flip-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Front — polaroid */
+        .flip-front {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 12px 12px 0;
+        }
+
+        /* Tape decoration */
+        .flip-front::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+            width: 60px;
+            height: 22px;
+            background: rgba(255, 255, 100, 0.6);
+            border-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 3px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .flip-front:hover .polaroid-img {
+            transform: scale(1.03);
+        }
+
+        .polaroid-caption-wrap {
+            padding: 1rem 0.5rem 1.2rem;
+            text-align: center;
+        }
+
+        .polaroid-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #ff69b4;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .polaroid-caption {
+            font-size: 0.85rem;
+            color: #888;
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+        }
+
+        .flip-hint {
+            font-size: 0.7rem;
+            color: #ccc;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Back — quote card */
+        .flip-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .back-icon {
+            font-size: 3rem;
+            animation: heartPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .back-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .back-quote {
+            font-family: 'Caveat', cursive;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .back-tag {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+            letter-spacing: 0.05em;
+        }
+
+        /* Back card gradient colors per card */
+        .polaroid-wrap:nth-child(1) .flip-back {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+        }
+
+        .polaroid-wrap:nth-child(2) .flip-back {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+        }
+
+        .polaroid-wrap:nth-child(3) .flip-back {
+            background: linear-gradient(135deg, #f97316, #ec4899);
+        }
+
+        .polaroid-wrap:nth-child(4) .flip-back {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        }
+
+        .polaroid-wrap:nth-child(5) .flip-back {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+        }
+
+        .polaroid-wrap:nth-child(6) .flip-back {
+            background: linear-gradient(135deg, #f43f5e, #a855f7);
+        }
+
+        /* ─── Extra Quote Banner ─── */
+        .quote-banner {
+            max-width: 700px;
+            margin: 1rem auto 0;
+            padding: 2rem 2.5rem;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255, 105, 180, 0.3);
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .quote-banner blockquote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #be185d;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .quote-banner cite {
+            display: block;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #9d174d;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ─── Final Message Section ─── */
+        .final-message {
+            text-align: center;
+            padding: 4rem 2rem 5rem;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(12px);
+            margin-top: 3rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .final-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 1.5rem;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .final-message .msg-line {
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin: 0 auto 1rem;
+            line-height: 1.9;
+            color: #4a2060;
+            font-weight: 500;
+        }
+
+        .final-emoji-row {
+            font-size: 2rem;
+            letter-spacing: 0.4rem;
+            margin: 1.5rem 0;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+
+        /* ─── Goodbye Button ─── */
+        .goodbye-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ff69b4, #da70d6, #c084fc);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.5);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .goodbye-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 105, 180, 0.7);
+        }
+
+        .goodbye-btn .btn-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-20deg);
+            animation: btnShine 3s ease-in-out infinite 2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes btnShine {
+            0% {
+                left: -100%;
+            }
+
+            40% {
+                left: 150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* ─── Scrollbar ─── */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#ff69b4, #da70d6);
+            border-radius: 5px;
+        }
+
+        /* ─── Animations ─── */
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .welcome h1 {
+                font-size: 2.8rem;
+            }
+
+            .memory-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .final-message h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cursor -->
+    <div class="cursor">
+        <svg viewBox="0 0 24 24">
+            <path fill="#ff69b4"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+    </div>
+
+    <div class="magic-sparkles"></div>
+
+    <div class="floating-hearts">
+        <div class="heart" style="left:5%;  --float-duration:6s; --delay:0s;  --translate-x:20px">💝</div>
+        <div class="heart" style="left:15%; --float-duration:8s; --delay:1s;  --translate-x:-30px">💖</div>
+        <div class="heart" style="left:30%; --float-duration:7s; --delay:2s;  --translate-x:40px">💗</div>
+        <div class="heart" style="left:55%; --float-duration:9s; --delay:0.5s;--translate-x:-20px">💓</div>
+        <div class="heart" style="left:70%; --float-duration:5s; --delay:3s;  --translate-x:30px">💕</div>
+        <div class="heart" style="left:85%; --float-duration:7s; --delay:1.5s;--translate-x:-25px">💞</div>
+        <div class="heart" style="left:45%; --float-duration:6s; --delay:4s;  --translate-x:15px">🌸</div>
+        <div class="heart" style="left:90%; --float-duration:8s; --delay:2.5s;--translate-x:-35px">✨</div>
+    </div>
+
+    <!-- Welcome -->
+    <section class="welcome">
+        <h1>Our Beautiful Moments Together</h1>
+        <p>Every moment spent with you has been pure magic. Hover & click the photos below to reveal what you truly mean
+            💫</p>
+        <div class="welcome-badge">✨ Click a card to flip it! ✨</div>
+    </section>
+
+    <!-- Section header -->
+    <div class="section-header">
+        <h2>Memory Lane 📸</h2>
+        <p>Tap each polaroid to see the secret message behind it</p>
+        <div class="divider"></div>
+    </div>
+
+    <!-- Polaroid Flip Cards -->
+    <div class="memory-container">
+
+        <!-- Card 1 -->
+        <div class="polaroid-wrap" onclick="this.querySelector('.flip-card').classList.toggle('flipped')">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <img src="./image1.jpg?v=2" alt="Memory 1" class="polaroid-img">
+                    <div class="polaroid-caption-wrap">
+                        <div class="polaroid-date">Her Smile Says It All ✨</div>
+                        <div class="polaroid-caption">You light up every room you walk into 🌸</div>
+                        <div class="flip-hint">👆 Click to flip</div>
+                    </div>
+                </div>
+                <div class="flip-back">
+                    <div class="back-icon">💖</div>
+                    <div class="back-title">Pure Gold</div>
+                    <div class="back-quote">"You're truly one of the sweetest girls I know, and I feel incredibly lucky
+                        to have you in my life. Your kindness is rare and precious."</div>
+                    <div class="back-tag">— A note from the heart ❤️</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="polaroid-wrap" onclick="this.querySelector('.flip-card').classList.toggle('flipped')">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <img src="./image2.jpg?v=2" alt="Memory 2" class="polaroid-img">
+                    <div class="polaroid-caption-wrap">
+                        <div class="polaroid-date">Together Vibes 💕</div>
+                        <div class="polaroid-caption">The best moments in life are shared 😊</div>
+                        <div class="flip-hint">👆 Click to flip</div>
+                    </div>
+                </div>
+                <div class="flip-back">
+                    <div class="back-icon">🌟</div>
+                    <div class="back-title">Endless Happiness</div>
+                    <div class="back-quote">"May your journey ahead be filled with happiness, success, and endless
+                        smiles. You deserve every beautiful thing this world has to offer."</div>
+                    <div class="back-tag">— Wishing you the universe 💫</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="polaroid-wrap" onclick="this.querySelector('.flip-card').classList.toggle('flipped')">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <img src="./image3.jpg?v=2" alt="Memory 3" class="polaroid-img">
+                    <div class="polaroid-caption-wrap">
+                        <div class="polaroid-date">Pretty Soul 🌷</div>
+                        <div class="polaroid-caption">Beautiful inside and out, always 💖</div>
+                        <div class="flip-hint">👆 Click to flip</div>
+                    </div>
+                </div>
+                <div class="flip-back">
+                    <div class="back-icon">🌸</div>
+                    <div class="back-title">Shining Light</div>
+                    <div class="back-quote">"Keep being the amazing person you are — you make every moment brighter. The
+                        world is genuinely a better place because you're in it."</div>
+                    <div class="back-tag">— From someone who sees your magic ✨</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 — special wishes card (now with photo) -->
+        <div class="polaroid-wrap" onclick="this.querySelector('.flip-card').classList.toggle('flipped')">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <img src="./image4.jpg?v=2" alt="Memory 4" class="polaroid-img">
+                    <div class="polaroid-caption-wrap">
+                        <div class="polaroid-date">Birthday Magic ✨</div>
+                        <div class="polaroid-caption">A special wish just for you...</div>
+                        <div class="flip-hint">👆 Click to reveal</div>
+                    </div>
+                </div>
+                <div class="flip-back">
+                    <div class="back-icon">🎉</div>
+                    <div class="back-title">My Birthday Wish For You</div>
+                    <div class="back-quote">"May this year bring you more joy than you can hold, more love than you
+                        expect, and more magic than you dare to dream. Happy Birthday! 🎈"</div>
+                    <div class="back-tag">— With all the love in the world 💗</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 — friendship card (now with photo) -->
+        <div class="polaroid-wrap" onclick="this.querySelector('.flip-card').classList.toggle('flipped')">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <img src="./image5.jpg?v=2" alt="Memory 5" class="polaroid-img">
+                    <div class="polaroid-caption-wrap">
+                        <div class="polaroid-date">Our Bond 💜</div>
+                        <div class="polaroid-caption">Some friendships are forever...</div>
+                        <div class="flip-hint">👆 Click to flip</div>
+                    </div>
+                </div>
+                <div class="flip-back">
+                    <div class="back-icon">💜</div>
+                    <div class="back-title">The Bestest</div>
+                    <div class="back-quote">"Thank you for being the kind of person who makes ordinary moments feel
+                        extraordinary. You're not just a friend — you're a whole vibe. 🌟"</div>
+                    <div class="back-tag">— Forever grateful for you 🌸</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 — future card (now with photo) -->
+        <div class="polaroid-wrap" onclick="this.querySelector('.flip-card').classList.toggle('flipped')">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <img src="./image6.jpg?v=2" alt="Memory 6" class="polaroid-img">
+                    <div class="polaroid-caption-wrap">
+                        <div class="polaroid-date">Your Future ✨</div>
+                        <div class="polaroid-caption">The best is yet to come...</div>
+                        <div class="flip-hint">👆 Click to flip</div>
+                    </div>
+                </div>
+                <div class="flip-back">
+                    <div class="back-icon">🚀</div>
+                    <div class="back-title">Dream Big</div>
+                    <div class="back-quote">"The road ahead of you is paved with incredible things — success,
+                        adventures, love, and endless laughter. Chase every dream, karthika. You've got this! 💪"</div>
+                    <div class="back-tag">— Believing in you always 💖</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Quote Banner -->
+    <div class="quote-banner" style="margin: 2rem auto; position:relative; z-index:3;">
+        <blockquote>
+            "A friend is someone who knows all about you and still loves you just the same." 💖
+        </blockquote>
+        <cite>— Just for karthika, on her special day 🌸</cite>
+    </div>
+
+    <!-- Final Message -->
+    <section class="final-message">
+        <h2>Thank You for Being You 💗</h2>
+
+        <p class="msg-line">
+            Every laugh, every chat, and every moment we've shared has been truly special. 💫<br>
+            I'm so grateful for the warmth and positivity you always bring into my life.
+        </p>
+
+        <p class="msg-line">
+            On your birthday, I wish you <strong>endless happiness</strong>, boundless love,<br>
+            and all the success your beautiful heart deserves. 🌸
+        </p>
+
+        <div class="final-emoji-row">🎂 🎈 🎉 🎊 🥳 🎁 🌟 💖</div>
+
+        <p class="msg-line">
+            You deserve all the joy in the world — keep shining, keep growing,<br>
+            and keep spreading your beautiful energy everywhere you go. ✨
+        </p>
+
+        <p class="msg-line"
+            style="font-family:'Dancing Script',cursive; font-size:1.4rem; color:#be185d; margin-top:1.5rem;">
+            Happy Birthday, karthika! 🎉💖🎂
+        </p>
+
+        <br>
+        <a href="index.html" class="goodbye-btn">
+            🔁 Replay the Magic
+            <span class="btn-shine"></span>
+        </a>
+    </section>
+
+    <script>
+        // ─── Custom cursor ───
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // ─── Floating hearts extra spawn ───
+        function spawnHeart() {
+            const el = document.createElement('div');
+            el.textContent = ['💖', '💗', '💕', '✨', '🌸', '💫'][Math.floor(Math.random() * 6)];
+            el.style.cssText = `
+                position:fixed; pointer-events:none; z-index:200;
+                font-size:${Math.random() * 18 + 12}px;
+                left:${Math.random() * 100}vw;
+                bottom:-40px;
+            `;
+            document.body.appendChild(el);
+            el.animate([
+                { transform: 'translateY(0)', opacity: 1 },
+                { transform: `translateY(-${Math.random() * 400 + 200}px)`, opacity: 0 }
+            ], { duration: Math.random() * 2000 + 3000, easing: 'ease-out' }).onfinish = () => el.remove();
+        }
+        setInterval(spawnHeart, 2500);
+
+        // ─── Scroll reveal for cards ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = entry.target.style.transform || '';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.polaroid-wrap').forEach((card, i) => {
+            card.style.opacity = '0';
+            card.style.transition = `opacity 0.6s ease ${i * 0.15}s, transform 0.4s ease`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>

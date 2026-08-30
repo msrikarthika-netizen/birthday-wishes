@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Wish! 🎂</title>
+    <meta name="description" content="Blow out the candles and make a birthday wish, karthika! 🎂">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="cake.css">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <svg viewBox="0 0 24 24">
+            <path fill="#ff69b4"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+    </div>
+
+    <!-- Confetti layer (populated by JS) -->
+    <div class="confetti-layer" id="confettiLayer"></div>
+
+    <!-- Floating stars -->
+    <div class="stars-wrap" id="starsWrap"></div>
+
+    <div class="page-wrap">
+
+        <h1 class="cake-title" id="cakeTitle">Make a Wish! 🎂</h1>
+        <p class="cake-subtitle" id="cakeSubtitle">Blow out the candles, karthika! Click each flame to blow it out 🕯️
+        </p>
+
+        <!-- ── CSS Cake ── -->
+        <div class="cake-scene" id="cakeScene">
+
+            <!-- Candles row -->
+            <div class="candles-row" id="candlesRow">
+                <!-- 5 candles, generated in JS -->
+            </div>
+
+            <!-- Cake tiers -->
+            <div class="cake-top-tier">
+                <div class="tier-deco">🎀 Happy Birthday 🎀</div>
+            </div>
+            <div class="cake-mid-tier">
+                <div class="frosting-drips">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="tier-deco-mid">🌸 karthika 🌸</div>
+            </div>
+            <div class="cake-bot-tier">
+                <div class="frosting-drips">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="tier-deco-bot">💖 ✨ 💖 ✨ 💖</div>
+            </div>
+            <div class="cake-plate"></div>
+        </div>
+
+        <!-- Blow all button -->
+        <button class="blow-btn" id="blowAllBtn">
+            💨 Blow All Candles!
+            <span class="btn-shine"></span>
+        </button>
+
+        <!-- Wish reveal (hidden until all blown) -->
+        <div class="wish-reveal" id="wishReveal">
+            <div class="wish-emoji-row">🎉 🎊 🥳 🎈 🎁</div>
+            <h2 class="wish-title">Your Wish is Granted! ✨</h2>
+            <p class="wish-text">
+                May every single dream of yours bloom into reality, karthika.<br>
+                You deserve all the happiness this world can hold — and more. 🌸<br>
+                <em>This year is going to be the most magical one yet!</em> 💖
+            </p>
+            <div class="wish-hearts">💗 💖 💝 💗 💖</div>
+            <button class="wish-next-btn" id="wishNextBtn">
+                See Our Memories 📸
+                <span class="btn-shine"></span>
+            </button>
+        </div>
+
+    </div>
+
+    <script src="cake.js"></script>
+</body>
+
+</html>

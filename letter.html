@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter For You 💌</title>
+    <meta name="description" content="A heartfelt birthday letter written just for you, karthika 💖">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&family=Caveat:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="letter.css">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <svg viewBox="0 0 24 24">
+            <path fill="#ff69b4"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+    </div>
+
+    <!-- Floating rose petals -->
+    <div class="petals-bg" id="petalsBg"></div>
+
+    <!-- Stars bg -->
+    <div class="stars-bg" id="starsBg"></div>
+
+    <!-- Page Wrapper -->
+    <div class="scene" id="scene">
+
+        <!-- ENVELOPE STAGE (shown first) -->
+        <div class="env-stage" id="envStage">
+            <div class="envelope" id="envelope">
+                <!-- Envelope back -->
+                <div class="env-back"></div>
+                <!-- Envelope flap (top lid) -->
+                <div class="env-flap" id="envFlap"></div>
+                <!-- Envelope front body -->
+                <div class="env-front">
+                    <div class="env-seal" id="envSeal">
+                        <span>💌</span>
+                    </div>
+                    <div class="env-label">For karthika ✨</div>
+                </div>
+            </div>
+            <!-- Click hint -->
+            <p class="click-hint" id="clickHint">✨ Click the envelope to open 💌</p>
+        </div>
+
+        <!-- LETTER PAPER (hidden, shown after envelope opens) -->
+        <div class="letter-paper" id="letterPaper">
+            <div class="letter-inner">
+                <div class="letter-header">
+                    <span class="letter-rose">🌹</span>
+                    <span class="letter-date">On Your Special Day...</span>
+                    <span class="letter-rose">🌹</span>
+                </div>
+
+                <p class="letter-salutation">Dear karthika, 💖</p>
+
+                <p class="letter-line" style="--li:0">There are some people who walk into your life</p>
+                <p class="letter-line" style="--li:1">and make the world so much brighter —</p>
+                <p class="letter-line" style="--li:2">You, my dear, are exactly that person. 🌟</p>
+
+                <p class="letter-line" style="--li:3">Your smile is a little bit of magic,</p>
+                <p class="letter-line" style="--li:4">your laugh is the sweetest melody,</p>
+                <p class="letter-line" style="--li:5">and your heart is pure gold. 💛</p>
+
+                <p class="letter-line" style="--li:6">On this beautiful birthday of yours,</p>
+                <p class="letter-line" style="--li:7">I hope the universe showers you</p>
+                <p class="letter-line" style="--li:8">with every joy you've ever dreamed of. 🌸</p>
+
+                <p class="letter-line" style="--li:9">May every candle you blow out tonight</p>
+                <p class="letter-line" style="--li:10">carry a wish straight to your heart,</p>
+                <p class="letter-line" style="--li:11">and may every single one come true. ✨</p>
+
+                <p class="letter-sign">With all my love, always 💗<br><em>— Your Secret Birthday Elf 🧝</em></p>
+
+                <div class="letter-btn-wrap">
+                    <button class="letter-next-btn" id="letterNextBtn">
+                        Now Make a Wish! 🎂
+                        <span class="btn-shine"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="letter.js"></script>
+</body>
+
+</html>
